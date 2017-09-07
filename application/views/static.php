@@ -10,6 +10,7 @@
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Coming soon, Bootstrap, Bootstrap 3.0, Free Coming Soon, free coming soon, free template, coming soon template, Html template, html template, html5, Code lab, codelab, codelab coming soon template, bootstrap coming soon template">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Registration</title>
     <!-- ============ Google fonts ============ -->
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet'
@@ -18,9 +19,23 @@
         rel='stylesheet' type='text/css' />
     <!-- ============ Add custom CSS here ============ -->
     <link href="<?php echo base_url();?>assets/register/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-      <link href="<?php echo base_url();?>assets/register/css/style.css" rel="stylesheet" type="text/css" />    
+      <link href="<?php echo base_url();?>assets/register/css/style.css" rel="stylesheet" type="text/css" />   
+      <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script> 
    
     <link href="<?php echo base_url();?>assets/register/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.css">
+
+<!--alert success-->
+<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+ <!--Let browser know website is optimized for mobile-->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.common.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+     <!-- Sweet Alert CSS import-->
+
+</head>
 
 </head>
 <body>
