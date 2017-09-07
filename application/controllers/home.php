@@ -43,18 +43,19 @@ class Home extends CI_Controller {
 
             // if($_FILES['filefoto']['name'])
             //{
-            if ($this->upload->do_upload('file')) {
-                $gbr = $this->upload->data();
+            $gbr = $this->upload->data();
+            if ($this->upload->do_upload('file') AND $this->mtabel_pegawai->tambah()) {
+                echo "<script>
+                        window.location.href='http://localhost/web/home/tambah_pegawaidb';
+                        alert('Sukses Broooo!!!!!!!!!!!!!!!!');
+                        </script>";
 
-                $this->mtabel_pegawai->tambah($data); //akses model untuk menyimpan ke database
-                $hasil['hasil'] = 'true';
-                echo json_encode($hasil);
-                redirect('home/index'); //jika berhasil maka akan ditampilkan view upload
-                //pesan yang muncul jika terdapat error dimasukkan pada session flashdat
             } else {
-                $hasil['hasil'] = 'false';
-                 echo json_encode($hasil);
-                redirect('home/index');  //jika gagal maka akan ditampilkan form upload
+             
+             echo "<script>
+                    window.location.href='http://localhost/web/home/tambah_pegawaidb';
+                    alert('Sukses Broooo!!!!!!!!!!!!!!!!');
+                    </script>";
 
             }
         }
@@ -62,6 +63,8 @@ class Home extends CI_Controller {
 
 
 }
+
+
 
 
 
