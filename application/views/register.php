@@ -126,7 +126,7 @@
 
                 <div class="form-group">
                     <div class="col-lg-8 col-lg-offset-3">
-                        <button type="submit" name="kirim" id="kirim" 
+                        <button type="submit" name="kirim" id="kirim" onclick="kirim();" 
                         class="btn btn-primary">
                             Kirim
                         </button>
@@ -143,56 +143,15 @@
 
 
  <script type="text/javascript">
-  $(document).ready(function() {
-   $(".kirim").click(function(event) {
-   event.preventDefault();
-   //mengambil data dari form
-   var nama_value= $("#nama").val();
-   var jk_value= $("#jk").val();
-   var tanggal_value= $("#tanggal").val();
-   var alamat_value= $("#alamat").val();    
-   var email_value= $("#email").val();
-   var hp_value= $("#hp").val();    
-   var pendidikan_value= $("#pendidikan").val();
-   var pengalaman_value= $("#pengalaman").val();
-   var divisi_value= $("#divisi").val();
-   var file_value= $("#file").val();        
-
-   jQuery.ajax({
-   type: "POST",
-   url: "<?php echo base_url(); ?>"+"home/tambah_pegawaidb",
-   dataType: 'json',
-   //mengirim data dengan type post
-   data: {nama: nama_value, jk : jk_value, tanggal : tanggal_value , alamat : alamat_value, email: email_value,
-   hp: hp_value, pendidikan: pendidikan_value, pengalaman: pengalaman_value, divisi: divisi_value, file: file_value},
-   //menerima result dari controller
-   success: function(res) {
-    if(res.hasil == 'true'){
-     swal({
-      title: "Sukses",
-      text: "Data Di Tambahkan",
-      showConfirmButton: true,
-      confirmButtonColor: '#0760ef',
-      type:"success"
-     },
-     function(){
-       document.getElementById('myForm').reset();
-     });
-    }
-    if(res.hasil == 'false'){
-     swal({
-      title: "Gagal",
-      text: "Data Gagal Tambahkan",
-      showConfirmButton: true,
-      confirmButtonColor: '#0760ef',
-      type:"error"
-     },
-     function(){
-      
-     });
-    }
-   }
-  });
- });
+  swal({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success",
+  button: "Aww yiss!",
+});,
+  function(){
+      window.location.href = 'home/index';
 });
- </script>
+});
+
+</script>
