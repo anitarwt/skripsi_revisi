@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <label for="inputPassword" class="col-lg-3 control-label" name="tanggal">Tanggal lahir</label>
                     <div class="col-lg-8">
-                        <input type="date" name="tanggal" value="" id="tanggal" class="form-control col-md-7 col-xs-12">
+                        <input type="text" name="tanggal" value="" id="tanggal" class="form-control col-md-7 col-xs-12">
                     </div>
                 </div>
                 <div class="form-group">
@@ -114,19 +114,18 @@
                         <span class="required">*</span>
                         (Ijazah/CV dalam bentuk .rar max size 2 mb)
 
-                        <input type="file" name="file" class="form-control col-md-7 col-xs-12" id="file">
+                        <input type="file" name="file" class="form-control col-md-7 col-xs-12" id="file" value="<?php echo set_value('file') ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword" class="col-lg-3 control-label">Kode Captcha</label>
-                    <div class="col-lg-8">
-                        <input type="text" name="tanggal" value="" class="form-control col-md-7 col-xs-12">
-                    </div>
+                     
+                <?php echo $captcha?>
+           
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-8 col-lg-offset-3">
-                        <button type="submit" name="kirim" id="kirim" onclick="kirim();" 
+                        <button type="submit" name="kirim" id="kirim" 
                         class="btn btn-primary">
                             Kirim
                         </button>
@@ -139,19 +138,57 @@
 
 </div>
 
-
-
-
  <script type="text/javascript">
-  swal({
-  title: "Good job!",
-  text: "You clicked the button!",
-  icon: "success",
-  button: "Aww yiss!",
-});,
-  function(){
-      window.location.href = 'home/index';
-});
-});
+  $(document).ready(function() {
+   $("form").submit(function(event){
+   event.preventDefault();
+   //mengambil data dari form
+   var nama_value= $("#nama").val();
+   var jk_value= $("#jk").val();
+   var tanggal_value= $("#tanggal").val();
+   var alamat_value= $("#alamat").val();    
+   var email_value= $("#email").val();
+   var hp_value= $("#hp").val();    
+   var pendidikan_value= $("#pendidikan").val();
+   var pengalaman_value= $("#pengalaman").val();
+   var divisi_value= $("#divisi").val();
+   var file_value= $("#file").val();        
 
-</script>
+   jQuery.ajax({
+   type: "POST",
+   url: "<?php echo base_url(); ?>"+"home/tambah_pegawaidb",
+   dataType: 'json',
+   //mengirim data dengan type post
+   data: {nama: nama_value, jk : jk_value, tanggal : tanggal_value , alamat : alamat_value, email: email_value,
+   hp: hp_value, pendidikan: pendidikan_value, pengalaman: pengalaman_value, divisi: divisi_value, file: file_value},
+   //menerima result dari controller
+   success: function(res) {
+    if(res.hasil == 'true'){
+     swal({
+      title: "Sukses",
+      text: "Data Di Tambahkan",
+      showConfirmButton: true,
+      confirmButtonColor: '#0760ef',
+      type:"success"
+     },
+     function(){
+       document.getElementById('form').reset();
+     });
+    }
+    if(res.hasil == 'false'){
+     swal({
+      title: "Gagal",
+      text: "Data Gagal Tambahkan",
+      showConfirmButton: true,
+      confirmButtonColor: '#0760ef',
+      type:"error"
+     },
+     function(){
+      
+     });
+    }
+   }
+  });
+ });
+});
+ </script>
