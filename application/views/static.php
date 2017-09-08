@@ -2,12 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-    <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-    <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-    <!--[if IE 9]> <html class="no-js ie9 oldie" lang="en"> <![endif]-->
     <meta charset="utf-8">
-    <!-- Set the viewport width to device width for mobile -->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Coming soon, Bootstrap, Bootstrap 3.0, Free Coming Soon, free coming soon, free template, coming soon template, Html template, html template, html5, Code lab, codelab, codelab coming soon template, bootstrap coming soon template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -19,23 +15,51 @@
         rel='stylesheet' type='text/css' />
     <!-- ============ Add custom CSS here ============ -->
     <link href="<?php echo base_url();?>assets/register/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-      <link href="<?php echo base_url();?>assets/register/css/style.css" rel="stylesheet" type="text/css" />   
-      <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script> 
-   
+    <link href="<?php echo base_url();?>assets/register/css/style.css" rel="stylesheet" type="text/css" />   
     <link href="<?php echo base_url();?>assets/register/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.css">
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/alert/sweetalert2.min.css">
 <!--alert success-->
 <script
   src="https://code.jquery.com/jquery-2.2.4.js"
   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
   crossorigin="anonymous"></script>
  <!--Let browser know website is optimized for mobile-->
+ <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script> 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.common.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+ <script type="text/javascript" src="<?php echo base_url(); ?>assets/alert/sweetalert2.js"></script>
+<script src="<?php echo base_url();?>assets/register/js/jquery.js" type="text/javascript"></script>
      <!-- Sweet Alert CSS import-->
 
-</head>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/datepicker/development-bundle/themes/base/jquery.ui.all.css">
+<script src="<?php echo base_url();?>assets/datepicker/development-bundle/jquery-1.8.3.js"></script>
+<script src="<?php echo base_url();?>assets/datepicker/development-bundle/ui/jquery.ui.core.js"></script>
+<script src="<?php echo base_url();?>assets/datepicker/development-bundle/ui/jquery.ui.widget.js"></script>
+<script src="<?php echo base_url();?>assets/datepicker/development-bundle/ui/jquery.ui.datepicker.js"></script>
+
+<script>
+ $( document ).ready(function() {
+    $("#tanggal").datepicker({ 
+        format: 'yyyy-mm-dd'
+    });
+    $("#tanggal").on("change", function () {
+        var fromdate = $(this).val();
+       
+    });
+});
+    </script>
+
+
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <style>
+            .login-box{
+                width: 300px;
+                margin: auto;
+                margin-top: 100px;
+            }
+        </style>
+        <?php echo $script_captcha; ?>
 
 </head>
 <body>
@@ -72,8 +96,11 @@
 
          </div>
         </div>
-        <script src="<?php echo base_url();?>assets/register/js/jquery.js" type="text/javascript"></script>
-        <script src="<?php echo base_url();?>assets/register/js/bootstrap.min.js" type="text/javascript"></script>
+        
+
+</body>
+</html>
+<script src="<?php echo base_url();?>assets/register/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>assets/register/js/jquery.backstretch.js" type="text/javascript"></script>
         <script type="text/javascript">
             'use strict';
@@ -95,6 +122,3 @@
         }
     );
         </script>
-
-</body>
-</html>
