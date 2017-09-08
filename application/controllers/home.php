@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('Recaptcha');
+    }
 
 	public function index()
 	{
@@ -27,10 +32,14 @@ class Home extends CI_Controller {
         $this->form_validation->set_rules('pendidikan', 'pendidikan terakhir', 'trim|required|');
         $this->form_validation->set_rules('pengalaman', 'pengalaman kerja', 'trim|required|');
         $this->form_validation->set_rules('divisi', 'divisi', 'trim|required|');
-
+        $recaptcha = $this->input->post('g-recaptcha-response');
+        $response = $this->recaptcha->verifyResponse($recaptcha);
 
         if ($this->form_validation->run() == FALSE) {
-            $this->template->load('static', 'register');
+            echo json_encode(['hasil'=>'false']);
+            //$this->template->load('static', 'register');
+
+
         } else {
             $this->load->library('upload');
             $nmfile = "file_" . time(); //nama file saya beri nama langsung dan diikuti fungsi time
@@ -43,25 +52,22 @@ class Home extends CI_Controller {
 
             // if($_FILES['filefoto']['name'])
             //{
+            if ($this->upload->do_upload('file')) {
             $gbr = $this->upload->data();
-            if ($this->upload->do_upload('file') AND $this->mtabel_pegawai->tambah()) {
-                echo "<script>
-                        window.location.href='http://localhost/web/home/tambah_pegawaidb';
-                        alert('Sukses Broooo!!!!!!!!!!!!!!!!');
-                        </script>";
-
+                $this->mtabel_pegawai->tambah($data); //akses model untuk menyimpan ke database
+                $hasil['hasil'] = 'true';
+                echo json_encode($hasil);
+                redirect('home/index'); //jika berhasil maka akan ditampilkan view upload
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdat
             } else {
-             
-             echo "<script>
-                    window.location.href='http://localhost/web/home/tambah_pegawaidb';
-                    alert('Sukses Broooo!!!!!!!!!!!!!!!!');
-                    </script>";
+                $hasil['hasil'] = 'false';
+                 echo json_encode($hasil);
+                redirect('home/register');  //jika gagal maka akan ditampilkan form upload
 
             }
-        }
+         }
+
     }
-
-
 }
 
 
